@@ -45,7 +45,7 @@ class FeatureContext extends TestCase implements Context
     {
         $this->response = match ($arg1) {
             'get' => $this->getJson($arg2),
-            'post' => $this->postJson($arg2, $this->body),
+            'post' => $this->postJson($arg2, $this->request),
         };
     }
 
@@ -63,5 +63,13 @@ class FeatureContext extends TestCase implements Context
     public function iShouldSeeTheJson(PyStringNode $string)
     {
         $this->assertJsonStringEqualsJsonString($string->getRaw(), $this->response->getContent());
+    }
+
+    /**
+     * @When The request body is:
+     */
+    public function theRequestBodyIs(PyStringNode $string)
+    {
+        $this->request = json_decode($string->getRaw(),true);
     }
 }
