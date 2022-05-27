@@ -1,15 +1,19 @@
 Feature: Store Articles
     @storeArticle
     Scenario: Store New Article
+        Given There is a Category with name "life style"
+        And There is a Category with name "science"
         When The request body is:
         """
         {
            "title" : "How to enjoy!",
-           "body": "Lorem ipsum..."
+           "body": "Lorem ipsum...",
+           "categories" : [1,2,4]
         }
         """
         And I send the "post" request to path "/api/articles"
         Then The response status code is "201"
+        And The article id "1" has "2" categories
         And I should see the json:
         """
         {

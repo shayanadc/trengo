@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Category;
+use Behat\Behat\Tester\Exception\PendingException;
 use App\Models\Article;
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
@@ -71,5 +73,22 @@ class FeatureContext extends TestCase implements Context
     public function theRequestBodyIs(PyStringNode $string)
     {
         $this->request = json_decode($string->getRaw(),true);
+    }
+
+    /**
+     * @Given There is a Category with name :arg1
+     */
+    public function thereIsACategoryWithName($arg1)
+    {
+        Category::factory()->create(['name' => $arg1]);
+    }
+
+    /**
+     * @Then The article id :arg1 has :arg2 categories
+     */
+    public function theArticleIdHasCategories($arg1, $arg2)
+    {
+        $articleCategories = Article::find($arg1)->categories;
+        $this->assertCount($arg2, $articleCategories);
     }
 }

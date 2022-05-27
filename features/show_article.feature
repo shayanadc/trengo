@@ -3,7 +3,7 @@ Feature: Show Article by Id
     Scenario: Show Article
         Given there is a article with title "How to have a fun!" and body "Lorem ipsum..."
         And there is a article with title "How to enjoy!" and body "Lorem ipsum..."
-        And I send the "get" request to path "/api/articles/2"
+        When I send the "get" request to path "/api/articles/2"
         Then The response status code is "200"
         And I should see the json:
         """
@@ -19,7 +19,7 @@ Feature: Show Article by Id
     @NotFoundArticleId
     Scenario: Could not Show Non-existed Article
         Given there is a article with title "How to have a fun!" and body "Lorem ipsum..."
-        And I send the "get" request to path "/api/articles/2"
+        When I send the "get" request to path "/api/articles/2"
         Then The response status code is "404"
         And I should see the json:
         """
