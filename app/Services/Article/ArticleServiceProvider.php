@@ -2,7 +2,9 @@
 
 namespace App\Services\Article;
 
+use App\Services\Article\Concretes\ArticleListingService;
 use App\Services\Article\Concretes\ArticleStoreService;
+use App\Services\Article\Contracts\ArticleListingContract;
 use App\Services\Article\Contracts\ArticleStoreContract;
 use App\Services\Cycle\Concretes\CycleService;
 use App\Services\Cycle\Contracts\CycleServiceContract;
@@ -21,6 +23,10 @@ class ArticleServiceProvider extends ServiceProvider
         $this->app->bind(
             ArticleStoreContract::class,
             ArticleStoreService::class
+        );
+        $this->app->bind(
+            ArticleListingContract::class,
+            ArticleListingService::class
         );
     }
 
