@@ -91,4 +91,24 @@ class FeatureContext extends TestCase implements Context
         $articleCategories = Article::find($arg1)->categories;
         $this->assertCount($arg2, $articleCategories);
     }
+
+    /**
+     * @Given today is :arg1
+     */
+    public function todayIs($arg1)
+    {
+        \Carbon\Carbon::setTestNow($arg1);
+    }
+
+
+    /**
+     * @Given The article id :arg1 attach :arg2 categories
+     */
+    public function theArticleIdAttachCategories($arg1, $arg2)
+    {
+        \Illuminate\Support\Facades\DB::table('article_category')->insert([
+            'article_id' => $arg1,
+            'category_id' => $arg2
+        ]);
+    }
 }
