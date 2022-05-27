@@ -9,9 +9,9 @@ Feature: Show Article by Id
         """
         {
             "article" : {
-               "title" : "How to have a fun!",
+               "title" : "How to enjoy!",
                "body": "Lorem ipsum...",
-               "id": 1
+               "id": 2
             }
         }
         """
