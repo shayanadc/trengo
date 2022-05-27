@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreArticleRequest;
-use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Article;
+use App\Services\Article\Concretes\ArticleStoreService;
+use App\Services\Article\Contracts\ArticleStoreContract;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
@@ -33,11 +34,12 @@ class ArticleController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreArticleRequest  $request
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function store(StoreArticleRequest $request)
+    public function store(Request $request, ArticleStoreContract $articleStoreContract): JsonResponse
     {
-        //
+
+        return response()->json(['article' => $articleStoreContract->store($request->all())], 201);
     }
 
 
