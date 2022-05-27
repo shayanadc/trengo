@@ -25,7 +25,8 @@ class StoreArticleRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'body' => 'string'
+            'body' => 'string',
+            'categories' => 'array'
         ];
     }
 }
