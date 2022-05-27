@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -60,6 +61,17 @@ class Handler extends ExceptionHandler
                     "detail" => 'Ensure your query id is in your database'
                 ],
             ], 404);
+        }
+
+        if($e instanceof ValidationException){
+            return response()->json([
+                "errors" => [
+                    "type" => "ValidationException",
+                    "detail" => $e->errors(),
+                    "code" => 422,
+                    "message" => $e->getMessage(),
+                ],
+            ], 422);
         }
 
         return parent::render($request, $e);

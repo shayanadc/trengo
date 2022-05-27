@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreArticleRequest;
 use App\Models\Article;
 use App\Services\Article\Concretes\ArticleStoreService;
 use App\Services\Article\Contracts\ArticleStoreContract;
@@ -36,7 +37,7 @@ class ArticleController extends Controller
      * @param  \App\Http\Requests\StoreArticleRequest  $request
      * @return JsonResponse
      */
-    public function store(Request $request, ArticleStoreContract $articleStoreContract): JsonResponse
+    public function store(StoreArticleRequest $request, ArticleStoreContract $articleStoreContract): JsonResponse
     {
 
         return response()->json(['article' => $articleStoreContract->store($request->all())], 201);
