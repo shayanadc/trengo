@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreArticleRequest;
 use App\Models\Article;
 use App\Services\Article\Concretes\ArticleStoreService;
+use App\Services\Article\Contracts\ArticleListingContract;
 use App\Services\Article\Contracts\ArticleStoreContract;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -16,9 +17,9 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ArticleListingContract $articleListingContract)
     {
-        //
+        return response()->json(['articles' => $articleListingContract->getMany()]);
     }
 
     /**
