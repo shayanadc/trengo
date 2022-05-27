@@ -39,8 +39,7 @@ class ArticleController extends Controller
      */
     public function store(StoreArticleRequest $request, ArticleStoreContract $articleStoreContract): JsonResponse
     {
-
-        return response()->json(['article' => $articleStoreContract->store($request->all())], 201);
+        return response()->json(['article' => $articleStoreContract->store($request->validated())], 201);
     }
 
 
