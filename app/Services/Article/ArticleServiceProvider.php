@@ -6,8 +6,6 @@ use App\Services\Article\Concretes\ArticleListingService;
 use App\Services\Article\Concretes\ArticleStoreService;
 use App\Services\Article\Contracts\ArticleListingContract;
 use App\Services\Article\Contracts\ArticleStoreContract;
-use App\Services\Cycle\Concretes\CycleService;
-use App\Services\Cycle\Contracts\CycleServiceContract;
 use Carbon\Laravel\ServiceProvider;
 
 class ArticleServiceProvider extends ServiceProvider

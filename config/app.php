@@ -200,7 +200,8 @@ return [
          * Domain Service Provider
          */
 
-        \App\Services\Article\ArticleServiceProvider::class
+        \App\Services\Article\ArticleServiceProvider::class,
+        \App\Services\Rate\RateServiceProvider::class
     ],
 
     /*

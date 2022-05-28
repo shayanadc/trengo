@@ -7,7 +7,6 @@ use App\Query\Article\ArticleBody;
 use App\Query\Article\ArticleCategory;
 use App\Query\Article\ArticleDate;
 use App\Query\Article\ArticleTitle;
-use App\QueryFilter\SampleType;
 use App\Services\Article\Contracts\ArticleListingContract;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Collection;
