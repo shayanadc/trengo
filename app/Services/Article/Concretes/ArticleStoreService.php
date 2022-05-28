@@ -24,7 +24,7 @@ class ArticleStoreService implements ArticleStoreContract
 
     public static function createArticleAndAttachCategories($articleAttributes, $categoryIds){
         $article = Article::create($articleAttributes);
-        $article->categories()->attach($categoryIds);
+        $article->attachCategories($categoryIds);
         return $article;
     }
 

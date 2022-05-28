@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 class Article extends Model
 {
@@ -65,5 +66,14 @@ class Article extends Model
         return $query->whereHas('categories', function($q) use($categoryIds) {
                 $q->whereIn('categories.id', $categoryIds);
          });
+    }
+
+    /**
+     * @param array $categoryIds
+     * @return void
+     */
+    public function attachCategories(Collection $categoryIds): void
+    {
+        $this->categories()->attach($categoryIds);
     }
 }
