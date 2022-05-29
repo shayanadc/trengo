@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Services\Rate;
+namespace App\Services\Review;
 
-use App\Services\Rate\Concretes\StoreRateService;
-use App\Services\Rate\Contracts\StoreRateContract;
+use App\Services\Review\Concretes\ReviewStoreService;
+use App\Services\Review\Contracts\ReviewStoreContract;
 use Carbon\Laravel\ServiceProvider;
 
-class RateServiceProvider extends ServiceProvider
+class ReviewServiceProvider extends ServiceProvider
 {
 
     /**
@@ -17,8 +17,8 @@ class RateServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            StoreRateContract::class,
-            StoreRateService::class
+            ReviewStoreContract::class,
+            ReviewStoreService::class
         );
     }
 

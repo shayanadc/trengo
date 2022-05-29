@@ -2,7 +2,7 @@
 
 namespace App\Rules;
 
-use App\Models\Rate;
+use App\Models\Review;
 use Illuminate\Contracts\Validation\Rule;
 
 class ArticleRateUniqueIp implements Rule
@@ -27,7 +27,7 @@ class ArticleRateUniqueIp implements Rule
      */
     public function passes($attribute, $value): bool
     {
-        return !Rate::where('article_id', $value)->where('ip', $this->ip)->first();
+        return !Review::where('article_id', $value)->where('ip', $this->ip)->first();
     }
 
     /**

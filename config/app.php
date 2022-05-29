@@ -201,7 +201,7 @@ return [
          */
 
         \App\Services\Article\ArticleServiceProvider::class,
-        \App\Services\Rate\RateServiceProvider::class
+        \App\Services\Review\ReviewServiceProvider::class
     ],
 
     /*
