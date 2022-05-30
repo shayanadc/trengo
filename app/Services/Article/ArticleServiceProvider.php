@@ -22,6 +22,7 @@ class ArticleServiceProvider extends ServiceProvider
             ArticleStoreContract::class,
             ArticleStoreService::class
         );
+
         $this->app->bind(
             ArticleListingContract::class,
             ArticleListingService::class

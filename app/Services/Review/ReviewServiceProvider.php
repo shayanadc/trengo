@@ -2,9 +2,11 @@
 
 namespace App\Services\Review;
 
+use App\Models\Review;
 use App\Services\Review\Concretes\ReviewStoreService;
 use App\Services\Review\Contracts\ReviewStoreContract;
 use Carbon\Laravel\ServiceProvider;
+use Illuminate\Support\Facades\Cache;
 
 class ReviewServiceProvider extends ServiceProvider
 {
@@ -29,7 +31,9 @@ class ReviewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        Review::created(function ($review) {
+            Cache::put($review->ip, 1, 10);
+        });
     }
 
 }
