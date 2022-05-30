@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Category;
+use App\Models\View;
 use Behat\Behat\Tester\Exception\PendingException;
 use App\Models\Article;
 use Behat\Behat\Context\Context;
@@ -110,5 +111,13 @@ class FeatureContext extends TestCase implements Context
             'article_id' => $arg1,
             'category_id' => $arg2
         ]);
+    }
+
+    /**
+     * @Given there is a :arg1 view for article :arg2
+     */
+    public function thereIsAViewForArticle($arg1, $arg2)
+    {
+        View::factory()->create(['article_id' => $arg2, 'count' => $arg1]);
     }
 }

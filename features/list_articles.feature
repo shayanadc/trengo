@@ -85,3 +85,39 @@ Feature: Store Articles
         }
         """
 
+    @listArticlesFilterByView
+    Scenario: List All Articles Filter By Views Count
+        And there is a article with title "fun with ..." and body "Lorem ipsum..."
+        And there is a article with title "enjoy with ..." and body "Lorem ipsum..."
+        And there is a article with title "listen music ..." and body "Lorem ipsum..."
+        And there is a "4" view for article "1"
+        And there is a "3" view for article "2"
+        And there is a "12" view for article "3"
+        And I send the "get" request to path "/api/articles?views"
+        Then The response status code is "200"
+        And I should see the json:
+        """
+        {
+            "articles" : [
+            {
+               "title" : "listen music ...",
+               "body": "Lorem ipsum...",
+               "id": 3,
+               "views" : 12
+            },
+            {
+               "title" : "fun with ...",
+               "body": "Lorem ipsum...",
+               "id": 1,
+               "views" : 4
+            },
+             {
+               "title" : "enjoy with ...",
+               "body": "Lorem ipsum...",
+               "id": 2,
+               "views" : 3
+            }
+            ]
+        }
+        """
+
