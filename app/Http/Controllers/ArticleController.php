@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreArticleRequest;
+use App\Jobs\ViewArticle;
 use App\Models\Article;
 use App\Services\Article\Contracts\ArticleListingContract;
 use App\Services\Article\Contracts\ArticleStoreContract;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
@@ -37,8 +39,9 @@ class ArticleController extends Controller
      * @param Article $article
      * @return JsonResponse
      */
-    public function show(Article $article) : JsonResponse
+    public function show(Article $article, Request $request) : JsonResponse
     {
+        ViewArticle::dispatchAfterResponse($article, $request->ip());
         return response()->json(['article' => $article]);
     }
 }
