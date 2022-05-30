@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class Article extends Model
 {
@@ -20,6 +21,14 @@ class Article extends Model
     public function categories(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Category::class);
+    }
+
+    /**
+     * The roles that belong to the user.
+     */
+    public function views(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(View::class, 'views');
     }
 
     /**
@@ -75,5 +84,19 @@ class Article extends Model
     public function attachCategories(Collection $categoryIds): void
     {
         $this->categories()->attach($categoryIds);
+    }
+
+    /**
+     * Scope a query to only include popular users.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeView($query): \Illuminate\Database\Eloquent\Builder
+    {
+        return $query->selectRaw('sum(views.count) AS views, articles.*')
+            ->leftJoin('views', 'views.article_id', '=', 'articles.id')
+            ->groupBy('views.article_id')
+            ->orderBy('views', 'desc');
     }
 }
