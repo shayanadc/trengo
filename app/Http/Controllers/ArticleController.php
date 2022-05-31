@@ -6,6 +6,7 @@ use App\Http\Requests\StoreArticleRequest;
 use App\Jobs\ViewArticle;
 use App\Models\Article;
 use App\Services\Article\Contracts\ArticleListingContract;
+use App\Services\Article\Contracts\ArticleShowingContract;
 use App\Services\Article\Contracts\ArticleStoreContract;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -39,9 +40,8 @@ class ArticleController extends Controller
      * @param Article $article
      * @return JsonResponse
      */
-    public function show(Article $article, Request $request) : JsonResponse
+    public function show(Article $article, Request $request, ArticleShowingContract $articleShowingContract) : JsonResponse
     {
-        ViewArticle::dispatchAfterResponse($article, $request->ip());
-        return response()->json(['article' => $article]);
+        return response()->json(['article' => $articleShowingContract->getOne($article, $request)]);
     }
 }
