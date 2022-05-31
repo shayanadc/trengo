@@ -3,19 +3,24 @@
 namespace App\Rules;
 
 use App\Models\Review;
+use App\Services\Review\Contracts\ReviewExistContract;
+use App\Services\Review\Contracts\ReviewStoreContract;
 use Illuminate\Contracts\Validation\Rule;
 
 class ArticleRateUniqueIp implements Rule
 {
     public string $ip;
+
+    public ReviewExistContract $reviewService;
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct(string $ip)
+    public function __construct(ReviewExistContract $reviewStoreContract, string $ip)
     {
         $this->ip = $ip;
+        $this->reviewService = $reviewStoreContract;
     }
 
     /**
@@ -27,7 +32,7 @@ class ArticleRateUniqueIp implements Rule
      */
     public function passes($attribute, $value): bool
     {
-        return !Review::where('article_id', $value)->where('ip', $this->ip)->first();
+        return $this->reviewService->getOne($value, $this->ip);
     }
 
     /**

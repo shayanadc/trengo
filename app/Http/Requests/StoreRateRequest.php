@@ -26,7 +26,7 @@ class StoreRateRequest extends FormRequest
     {
         return [
             'rate' => ['required','integer', 'between:1,5'],
-            'article_id' => new ArticleRateUniqueIp($this->ip())
+            'article_id' => (app()->make(ArticleRateUniqueIp::class, ['ip' => $this->ip()]))
         ];
     }
 }
