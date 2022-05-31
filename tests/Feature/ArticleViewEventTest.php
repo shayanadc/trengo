@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Jobs\ViewArticle;
 use App\Models\Article;
+use App\Models\RealTimeView;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Bus;
 use Tests\TestCase;
@@ -51,6 +52,20 @@ class ArticleViewEventTest extends TestCase
             'article_id' => $article->id,
             'ip' => '127.0.0.1'
         ]);
+
+    }
+
+    /**
+     * @return void
+     */
+    public function testAvoidDuplicatingViewByIp()
+    {
+        $article = Article::factory()->create();
+
+        RealTimeView::factory()->create(['ip' => '127.0.0.1', 'article_id' => $article->id]);
+        $this->get('/api/articles/'. $article->id);
+
+        $this->assertCount(1, RealTimeView::where('ip', '127.0.0.1')->get());
 
     }
 
