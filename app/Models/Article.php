@@ -81,7 +81,7 @@ class Article extends Model
      * @param array $categoryIds
      * @return void
      */
-    public function attachCategories(Collection $categoryIds): void
+    public function setCategories(Collection $categoryIds): void
     {
         $this->categories()->attach($categoryIds);
     }
