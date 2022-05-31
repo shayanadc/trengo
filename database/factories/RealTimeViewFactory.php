@@ -17,7 +17,7 @@ class RealTimeViewFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'ip' => $this->faker->ipv4
         ];
     }
 }

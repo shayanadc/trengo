@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('ip')->default(1);
             $table->foreignId('article_id')->constrained('articles')->onDelete('cascade');
             $table->timestamps();
+            $table->unique(['ip', 'article_id']);
         });
     }
 
