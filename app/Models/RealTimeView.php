@@ -34,4 +34,26 @@ class RealTimeView extends Model
     {
         return $query->whereDay('created_at', $date);
     }
+
+    /**
+     * Scope a query to only include popular users.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeArticle($query, $articleId): \Illuminate\Database\Eloquent\Builder
+    {
+        return $query->where('article_id', $articleId);
+    }
+
+    /**
+     * Scope a query to only include popular users.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeIp($query, $ip): \Illuminate\Database\Eloquent\Builder
+    {
+        return $query->where('ip', $ip);
+    }
 }
