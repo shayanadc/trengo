@@ -7,6 +7,7 @@ use App\Models\View;
 use App\Query\Article\ArticleBody;
 use App\Query\Article\ArticleCategory;
 use App\Query\Article\ArticleDate;
+use App\Query\Article\ArticleRate;
 use App\Query\Article\ArticleTitle;
 use App\Query\Article\ArticleView;
 use App\Services\Article\Contracts\ArticleListingContract;
@@ -24,7 +25,8 @@ class ArticleListingService implements ArticleListingContract
                 ArticleBody::class,
                 ArticleDate::class,
                 ArticleCategory::class,
-                ArticleView::class
+                ArticleView::class,
+                ArticleRate::class
             ])->thenReturn();
         return $pipeline->get();
     }

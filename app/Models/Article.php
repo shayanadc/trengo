@@ -99,4 +99,14 @@ class Article extends Model
             ->groupBy('views.article_id')
             ->orderBy('views', 'desc');
     }
+
+    /**
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeRate($query): \Illuminate\Database\Eloquent\Builder
+    {
+        return $query->orderBy('rate', 'desc');
+    }
 }
