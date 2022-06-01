@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Services\RealTimeView\Concretes\DailyViewSnapshot;
+use App\Services\Review\Concretes\ArticleReviewCollectorService;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -18,6 +19,10 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call(function (){
             DailyViewSnapshot::perform();
+        })->daily();
+
+        $schedule->call(function (){
+            ArticleReviewCollectorService::perform();
         })->daily();
 
         // $schedule->command('inspire')->hourly();
