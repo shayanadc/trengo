@@ -18,7 +18,8 @@ class ArticleFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(),
-            'body' => $this->faker->paragraph()
+            'body' => $this->faker->paragraph(),
+            'rate' => $this->faker->randomFloat(1,5)
         ];
     }
 }

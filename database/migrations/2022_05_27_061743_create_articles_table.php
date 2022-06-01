@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->longText('body')->nullable();
+            $table->decimal('rate')->default(0);
             $table->timestamps();
         });
     }
