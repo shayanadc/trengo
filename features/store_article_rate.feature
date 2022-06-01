@@ -1,7 +1,7 @@
 Feature: Store Articles
     @storeArticleRate
     Scenario: Store Rate For Specific New Article
-        Given there is a article with title "How to have a fun!" and body "Lorem ipsum..."
+        Given there is a article with title "How to have a fun!" and body "Lorem ipsum..." with rate "4"
         When The request body is:
         """
         {
@@ -25,7 +25,7 @@ Feature: Store Articles
 
     @notStoreArticleRate
     Scenario: Store Rate For Specific New Article
-        Given there is a article with title "How to have a fun!" and body "Lorem ipsum..."
+        Given there is a article with title "How to have a fun!" and body "Lorem ipsum..." with rate "4"
         When The request body is:
         """
         {
@@ -38,7 +38,7 @@ Feature: Store Articles
 
     @duplicateStoreArticleRate
     Scenario: Store Rate For Specific New Article
-        Given there is a article with title "How to have a fun!" and body "Lorem ipsum..."
+        Given there is a article with title "How to have a fun!" and body "Lorem ipsum..." with rate "4"
         When The request body is:
         """
         {
@@ -52,7 +52,7 @@ Feature: Store Articles
 
     @ArticleNotFound
     Scenario: Store Rate For Specific New Article
-        Given there is a article with title "How to have a fun!" and body "Lorem ipsum..."
+        Given there is a article with title "How to have a fun!" and body "Lorem ipsum..." with rate "4"
         When The request body is:
         """
         {

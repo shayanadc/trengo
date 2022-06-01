@@ -33,12 +33,13 @@ class FeatureContext extends TestCase implements Context
         parent::setUp();
     }
 
+
     /**
-     * @Given there is a article with title :arg1 and body :arg2
+     * @Given there is a article with title :arg1 and body :arg2 with rate :arg3
      */
-    public function thereIsAArticleWithTitleAndBody($arg1, $arg2)
+    public function thereIsAArticleWithTitleAndBodyWithRate($arg1, $arg2, $arg3)
     {
-        Article::factory()->create(['title' => $arg1, 'body' => $arg2]);
+        Article::factory()->create(['title' => $arg1, 'body' => $arg2, 'rate' => $arg3]);
     }
 
     /**
