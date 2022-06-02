@@ -22,7 +22,8 @@ class ArticleStoreService implements ArticleStoreContract
         return Category::existed($ids)->get('id')->pluck('id');
     }
 
-    public static function createArticleAndAttachCategories($articleAttributes, $categoryIds){
+    public static function createArticleAndAttachCategories($articleAttributes, $categoryIds)
+    {
         $article = Article::create($articleAttributes);
         $article->setCategories($categoryIds);
         return $article;

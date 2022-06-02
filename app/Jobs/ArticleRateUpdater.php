@@ -3,8 +3,6 @@
 namespace App\Jobs;
 
 use App\Services\Review\Concretes\ArticleRateSyncService;
-use App\Services\Review\Contracts\ArticleRateCollectorContract;
-use App\Services\View\Contracts\ViewAggregatorStoreContract;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;

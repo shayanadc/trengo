@@ -2,11 +2,8 @@
 
 namespace App\Services\Review\Concretes;
 
-use App\Models\Article;
-use App\Models\RealTimeView;
 use App\Models\Review;
 use App\Services\Review\Contracts\ReviewExistContract;
-use App\Services\Review\Contracts\ReviewStoreContract;
 use Illuminate\Support\Facades\Cache;
 
 class ReviewExistService implements ReviewExistContract

@@ -3,7 +3,6 @@
 namespace App\Services\Article\Concretes;
 
 use App\Models\Article;
-use App\Models\View;
 use App\Query\Article\ArticleBody;
 use App\Query\Article\ArticleCategory;
 use App\Query\Article\ArticleDate;
@@ -28,6 +27,7 @@ class ArticleListingService implements ArticleListingContract
                 ArticleView::class,
                 ArticleRate::class
             ])->thenReturn();
+
         return $pipeline->get();
     }
 }

@@ -9,7 +9,9 @@ class ArticleRate
         if (!request()->has('rate')) {
             return $next($request);
         }
+
         $builder = $next($request);
+
         return $builder->rate();
     }
 }

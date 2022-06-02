@@ -9,8 +9,11 @@ class ArticleDate
         if (!request()->has('date')) {
             return $next($request);
         }
+
         $builder = $next($request);
+
         $dateRange = explode(",", request('date'));
+
         return $builder->createdAtRange($dateRange);
     }
 }

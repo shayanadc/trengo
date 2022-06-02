@@ -9,7 +9,9 @@ class ArticleView
         if (!request()->has('views')) {
             return $next($request);
         }
+
         $builder = $next($request);
+
         return $builder->view();
     }
 }

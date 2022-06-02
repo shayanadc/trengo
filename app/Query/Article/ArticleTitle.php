@@ -9,7 +9,9 @@ class ArticleTitle
         if (!request()->has('title')) {
             return $next($request);
         }
+
         $builder = $next($request);
+
         return $builder->title(request('title'));
     }
 }

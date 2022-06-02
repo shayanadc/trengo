@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
 
 class Article extends Model
 {
@@ -18,7 +19,7 @@ class Article extends Model
     /**
      * The roles that belong to the user.
      */
-    public function categories(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class);
     }
@@ -26,7 +27,7 @@ class Article extends Model
     /**
      * The roles that belong to the user.
      */
-    public function views(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function views(): BelongsToMany
     {
         return $this->belongsToMany(View::class, 'views');
     }
@@ -34,10 +35,10 @@ class Article extends Model
     /**
      * Scope a query to only include popular users.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @param  Builder  $query
+     * @return Builder
      */
-    public function scopeTitle($query, $title): \Illuminate\Database\Eloquent\Builder
+    public function scopeTitle($query, $title): Builder
     {
         return $query->where('title', 'like', $title . '%');
     }
@@ -45,10 +46,10 @@ class Article extends Model
     /**
      * Scope a query to only include popular users.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @param  Builder  $query
+     * @return Builder
      */
-    public function scopeBody($query, $body): \Illuminate\Database\Eloquent\Builder
+    public function scopeBody($query, $body): Builder
     {
         return $query->where('body', 'like', $body . '%');
     }
@@ -56,10 +57,10 @@ class Article extends Model
     /**
      * Scope a query to only include popular users.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @param  Builder  $query
+     * @return Builder
      */
-    public function scopeCreatedAtRange($query, array $dateRange): \Illuminate\Database\Eloquent\Builder
+    public function scopeCreatedAtRange($query, array $dateRange): Builder
     {
         return $query->whereBetween('created_at', $dateRange);
     }
@@ -67,10 +68,10 @@ class Article extends Model
     /**
      * Scope a query to only include popular users.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @param  Builder  $query
+     * @return Builder
      */
-    public function scopeCategories($query, array $categoryIds): \Illuminate\Database\Eloquent\Builder
+    public function scopeCategories($query, array $categoryIds): Builder
     {
         return $query->whereHas('categories', function($q) use($categoryIds) {
                 $q->whereIn('categories.id', $categoryIds);
@@ -89,10 +90,10 @@ class Article extends Model
     /**
      * Scope a query to only include popular users.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @param  Builder  $query
+     * @return Builder
      */
-    public function scopeView($query): \Illuminate\Database\Eloquent\Builder
+    public function scopeView($query): Builder
     {
         return $query->selectRaw('sum(views.count) AS views, articles.*')
             ->leftJoin('views', 'views.article_id', '=', 'articles.id')
@@ -102,10 +103,10 @@ class Article extends Model
 
     /**
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @param  Builder  $query
+     * @return Builder
      */
-    public function scopeRate($query): \Illuminate\Database\Eloquent\Builder
+    public function scopeRate($query): Builder
     {
         return $query->orderBy('rate', 'desc');
     }

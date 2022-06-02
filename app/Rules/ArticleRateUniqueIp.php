@@ -2,9 +2,7 @@
 
 namespace App\Rules;
 
-use App\Models\Review;
 use App\Services\Review\Contracts\ReviewExistContract;
-use App\Services\Review\Contracts\ReviewStoreContract;
 use Illuminate\Contracts\Validation\Rule;
 
 class ArticleRateUniqueIp implements Rule
@@ -42,6 +40,6 @@ class ArticleRateUniqueIp implements Rule
      */
     public function message(): string
     {
-        return 'The validation error message.';
+        return 'You have already registered your reviews to this article!';
     }
 }

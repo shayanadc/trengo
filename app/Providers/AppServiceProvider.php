@@ -5,15 +5,9 @@ namespace App\Providers;
 use App\Jobs\ArticleRateUpdater;
 use App\Jobs\ViewArticle;
 use App\Jobs\ViewSnapshot;
-use App\Models\Review;
-use App\Services\Article\Concretes\ArticleStoreService;
-use App\Services\Article\Contracts\ArticleStoreContract;
 use App\Services\RealTimeView\Concretes\ViewProcessorService;
-use App\Services\RealTimeView\Contracts\ViewProcessorContract;
-use App\Services\Review\Concretes\ArticleReviewCollectorService;
 use App\Services\Review\Concretes\ArticleRateSyncService;
 use App\Services\View\Concretes\ViewAggregatesStoreService;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        //
     }
 
     /**
