@@ -37,10 +37,10 @@ class ReviewAverageCalculatorTest extends TestCase
                     [['rate' => 3, 'count' => 20]],
                 ],
                 [
-                    ['article_id' => 1, 'real_stars' => 4.14],
-                    ['article_id' => 2, 'real_stars' => 3.97],
-                    ['article_id' => 3, 'real_stars' => 3.98],
-                    ['article_id' => 4, 'real_stars' => 3.6],
+                    ['article_id' => 1, 'rate' => 4.14],
+                    ['article_id' => 2, 'rate' => 3.97],
+                    ['article_id' => 3, 'rate' => 3.98],
+                    ['article_id' => 4, 'rate' => 3.6],
                 ]
 
             ],
@@ -50,8 +50,8 @@ class ReviewAverageCalculatorTest extends TestCase
                     [['rate' => 5, 'count' => 1]],
                 ],
                 [
-                    ['article_id' => 1, 'real_stars' => 5],
-                    ['article_id' => 2, 'real_stars' => 5],
+                    ['article_id' => 1, 'rate' => 5],
+                    ['article_id' => 2, 'rate' => 5],
                 ]
 
             ],
@@ -62,9 +62,9 @@ class ReviewAverageCalculatorTest extends TestCase
                     [['rate' => 1, 'count' => 50]],
                 ],
                 [
-                    ['article_id' => 1, 'real_stars' => 3.49],
-                    ['article_id' => 2, 'real_stars' => 2.3],
-                    ['article_id' => 3, 'real_stars' => 1.37],
+                    ['article_id' => 1, 'rate' => 3.49],
+                    ['article_id' => 2, 'rate' => 2.3],
+                    ['article_id' => 3, 'rate' => 1.37],
                 ]
             ],
             [
@@ -74,9 +74,9 @@ class ReviewAverageCalculatorTest extends TestCase
                     [['rate' => 1, 'count' => 1]],
                 ],
                 [
-                    ['article_id' => 1, 'real_stars' => 4.84],
-                    ['article_id' => 2, 'real_stars' => 4.83],
-                    ['article_id' => 3, 'real_stars' => 4.79],
+                    ['article_id' => 1, 'rate' => 4.84],
+                    ['article_id' => 2, 'rate' => 4.83],
+                    ['article_id' => 3, 'rate' => 4.79],
                 ]
             ],
         ];

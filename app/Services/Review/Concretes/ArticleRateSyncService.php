@@ -10,6 +10,6 @@ class ArticleRateSyncService implements ArticleRateSyncContract
     public static function sync($review): void
     {
         Article::where('id', $review['article_id'])
-            ->update(['rate' => $review['real_stars']]);
+            ->update(['rate' => $review['rate']]);
     }
 }

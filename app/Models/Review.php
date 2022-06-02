@@ -39,7 +39,7 @@ class Review extends Model
     {
         $result = DB::select("SELECT article_id,
             ROUND(( ( avg_num_votes * avg_stars ) + ( this_num_votes * this_stars ) ) / ( avg_num_votes + this_num_votes ), 2)
-            AS real_stars FROM
+            AS rate FROM
              ( SELECT article_id, (SELECT COUNT(article_id) FROM reviews)
             / (SELECT COUNT(DISTINCT article_id) FROM reviews) AS avg_num_votes,
             (SELECT AVG(rate) FROM reviews) AS avg_stars, COUNT(rate) AS this_num_votes, AVG(rate) AS this_stars FROM reviews GROUP BY article_id)
