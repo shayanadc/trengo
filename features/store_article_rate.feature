@@ -39,6 +39,8 @@ Feature: Store Articles
     @duplicateStoreArticleRate
     Scenario: Store Rate For Specific New Article
         Given there is a article with title "How to have a fun!" and body "Lorem ipsum..." with rate "4"
+        And this ip "127.0.0.1" reviewed the article "1"
+        And mock remember cache "articles_reviewed_" for ip "127.0.0.1"
         When The request body is:
         """
         {
@@ -46,7 +48,6 @@ Feature: Store Articles
            "article_id" : 1
         }
         """
-        And I send the "post" request to path "/api/rates"
         And I send the "post" request to path "/api/rates"
         Then The response status code is "422"
 

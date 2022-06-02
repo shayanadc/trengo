@@ -1,8 +1,9 @@
 <?php
 
+use App\Models\Review;
 use App\Models\Category;
 use App\Models\View;
-use Behat\Behat\Tester\Exception\PendingException;
+
 use App\Models\Article;
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
@@ -14,6 +15,7 @@ use Tests\TestCase;
 class FeatureContext extends TestCase implements Context
 {
     use Illuminate\Foundation\Testing\DatabaseMigrations;
+
     private string $route;
     private Illuminate\Testing\TestResponse $response;
     private array $request = [];
@@ -74,7 +76,7 @@ class FeatureContext extends TestCase implements Context
      */
     public function theRequestBodyIs(PyStringNode $string)
     {
-        $this->request = json_decode($string->getRaw(),true);
+        $this->request = json_decode($string->getRaw(), true);
     }
 
     /**
@@ -121,4 +123,28 @@ class FeatureContext extends TestCase implements Context
     {
         View::factory()->create(['article_id' => $arg2, 'count' => $arg1]);
     }
+
+    /**
+     * @Given this ip :arg1 reviewed the article :arg2
+     */
+    public function thisIpReviewedTheArticle($arg1, $arg2)
+    {
+        \App\Models\Review::factory()->create(['ip' => $arg1, 'article_id' => $arg2]);
+    }
+
+
+    /**
+     * @Given mock remember cache :arg1 for ip :arg2
+     */
+    public function mockRememberCacheForIp($arg1, $arg2)
+    {
+        \Illuminate\Support\Facades\Cache::shouldReceive('remember')
+            ->once()
+            ->with($arg1 . $arg2, 3600, \Closure::class)
+            ->andReturn(
+                Review::ip($arg2)->get('article_id')->pluck('article_id')->toArray()
+
+            );
+    }
+
 }
