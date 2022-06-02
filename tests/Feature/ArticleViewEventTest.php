@@ -12,6 +12,7 @@ use Tests\TestCase;
 class ArticleViewEventTest extends TestCase
 {
     use DatabaseMigrations;
+
     /***
      * @return void
      */
