@@ -2,7 +2,7 @@
 
 namespace App\Services\RealTimeView\Contracts;
 
-interface DailyViewSnapshotContract
+interface ViewSnapshotAggregatorContract
 {
     public static function perform() : void;
 }

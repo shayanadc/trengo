@@ -2,7 +2,7 @@
 
 namespace App\Console;
 
-use App\Services\RealTimeView\Concretes\DailyViewSnapshot;
+use App\Services\RealTimeView\Concretes\ViewSnapshotAggregatorAggregatorService;
 use App\Services\Review\Concretes\ArticleReviewCollectorService;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -18,7 +18,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function (){
-            DailyViewSnapshot::perform();
+            ViewSnapshotAggregatorAggregatorService::perform();
         })->daily();
 
         $schedule->call(function (){

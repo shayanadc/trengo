@@ -4,9 +4,9 @@ namespace App\Services\RealTimeView\Concretes;
 
 use App\Models\Article;
 use App\Models\RealTimeView;
-use App\Services\RealTimeView\Contracts\ViewProcessorContract;
+use App\Services\RealTimeView\Contracts\ViewArticleProcessorContract;
 
-class ViewProcessorService implements ViewProcessorContract
+class ViewArticleArticleProcessorService implements ViewArticleProcessorContract
 {
     public function store(Article $article, string $ip) : void
     {

@@ -3,7 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\Article;
-use App\Services\RealTimeView\Contracts\ViewProcessorContract;
+use App\Services\RealTimeView\Contracts\ViewArticleProcessorContract;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -47,7 +47,7 @@ class ViewArticle implements ShouldQueue
      *
      * @return void
      */
-    public function handle(ViewProcessorContract $viewProcessor)
+    public function handle(ViewArticleProcessorContract $viewProcessor)
     {
         $viewProcessor->store($this->article, $this->ip);
     }

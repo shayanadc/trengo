@@ -11,22 +11,14 @@ class ArticleStoreService implements ArticleStoreContract
 {
     public function store(array $body) : Article
     {
-        $categoryIds = $body['categories'] ?? [];
-        $categoryIds = static::getManyCategoryIds($categoryIds);
+        $categoryIds = static::getManyCategoryIds($body['categories']);
 
-        return static::createArticleAndAttachCategories($body, $categoryIds);
+        return Article::saveWithCategories($body, $categoryIds);
 
     }
     public static function getManyCategoryIds(array $ids): Collection
     {
         return Category::existed($ids)->get('id')->pluck('id');
-    }
-
-    public static function createArticleAndAttachCategories($articleAttributes, $categoryIds)
-    {
-        $article = Article::create($articleAttributes);
-        $article->setCategories($categoryIds);
-        return $article;
     }
 
 }

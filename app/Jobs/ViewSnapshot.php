@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Services\View\Contracts\ViewAggregatorStoreContract;
+use App\Services\View\Contracts\ViewSnapshotStoreContract;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -44,7 +44,7 @@ class ViewSnapshot implements ShouldQueue
      *
      * @return void
      */
-    public function handle(ViewAggregatorStoreContract $dailyViewSnapshot)
+    public function handle(ViewSnapshotStoreContract $dailyViewSnapshot)
     {
         $dailyViewSnapshot->insertMany($this->views);
     }

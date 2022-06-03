@@ -5,7 +5,7 @@ namespace Tests\Feature;
 use App\Models\Article;
 use App\Models\RealTimeView;
 use App\Models\View;
-use App\Services\RealTimeView\Concretes\DailyViewSnapshot;
+use App\Services\RealTimeView\Concretes\ViewSnapshotAggregatorAggregatorService;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
@@ -30,7 +30,7 @@ class ViewSnapshotProcessorTest extends TestCase
 
         \Carbon\Carbon::setTestNow("2020-01-02");
 
-        $service = resolve(DailyViewSnapshot::class);
+        $service = resolve(ViewSnapshotAggregatorAggregatorService::class);
 
         $service::perform();
 

@@ -98,8 +98,7 @@ class Article extends Model
      */
     public function scopeView($query): Builder
     {
-        return $query
-            ->orderBy('views_count', 'desc');
+        return $query->orderBy('views_count', 'desc');
     }
 
     /**
@@ -124,6 +123,17 @@ class Article extends Model
             $query->withCount(['views' => function($query) {
                 $query->select(DB::raw('COALESCE(sum(count), 0)'));
             }]);
+        });
+    }
+
+    public static function saveWithCategories(array $attributes, Collection $categoryIds){
+        return DB::transaction(function () use ($attributes, $categoryIds) {
+
+            $article = Article::create($attributes);
+            $article->setCategories($categoryIds);
+
+            return $article;
+
         });
     }
 
