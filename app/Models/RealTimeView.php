@@ -25,7 +25,7 @@ class RealTimeView extends Model
     }
 
     /**
-     * Scope a query to only include popular users.
+     * Scope a query to only include viewed at.
      *
      * @param  Builder  $query
      * @return Builder
@@ -36,7 +36,7 @@ class RealTimeView extends Model
     }
 
     /**
-     * Scope a query to only include popular users.
+     * Scope a query to only with article id.
      *
      * @param  Builder  $query
      * @return Builder
@@ -47,7 +47,7 @@ class RealTimeView extends Model
     }
 
     /**
-     * Scope a query to only include popular users.
+     * Scope a query to only included ip.
      *
      * @param  Builder  $query
      * @return Builder

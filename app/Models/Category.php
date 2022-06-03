@@ -15,7 +15,7 @@ class Category extends Model
     protected $fillable = ['name'];
 
     /**
-     * The users that belong to the role.
+     * The categories that belong to the article.
      */
     public function articles(): BelongsToMany
     {
@@ -23,7 +23,7 @@ class Category extends Model
     }
 
     /**
-     * Scope a query to only include popular users.
+     * Scope a query to in articles.
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder

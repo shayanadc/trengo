@@ -14,7 +14,7 @@ class Review extends Model
     protected $fillable = ['rate', 'article_id', 'ip'];
 
     /**
-     * Scope a query to only include popular users.
+     * Scope a query to only include ip.
      *
      * @param  Builder  $query
      * @return Builder
@@ -25,7 +25,7 @@ class Review extends Model
     }
 
     /**
-     * Scope a query to only include popular users.
+     * Scope a query to only include article.
      *
      * @param  Builder  $query
      * @return Builder
@@ -35,6 +35,10 @@ class Review extends Model
         return $query->where('article_id', $ip);
     }
 
+    /**
+     * query for bayesian rate average formula
+     * @return mixed
+     */
     public static function getRateAverage()
     {
         $result = DB::select("SELECT article_id,
