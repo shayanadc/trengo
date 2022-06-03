@@ -12,6 +12,7 @@ use App\Query\Article\ArticleView;
 use App\Services\Article\Contracts\ArticleListingContract;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class ArticleListingService implements ArticleListingContract
 {
@@ -27,7 +28,6 @@ class ArticleListingService implements ArticleListingContract
                 ArticleView::class,
                 ArticleRate::class
             ])->thenReturn();
-
         return $pipeline->get();
     }
 }

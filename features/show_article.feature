@@ -12,6 +12,7 @@ Feature: Show Article by Id
                "title" : "How to enjoy!",
                "body": "Lorem ipsum...",
                 "rate": 4,
+                "views_count" : 0,
                "id": 2
             }
         }

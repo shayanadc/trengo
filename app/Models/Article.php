@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class Article extends Model
 {
@@ -27,9 +28,13 @@ class Article extends Model
     /**
      * The roles that belong to the user.
      */
-    public function views(): BelongsToMany
+    public function views(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->belongsToMany(View::class, 'views');
+        return $this->hasMany(View::class);
+    }
+
+    public function getSeenAttribute(){
+        return $this->views()->getQuery()->toSql();
     }
 
     /**
@@ -95,10 +100,8 @@ class Article extends Model
      */
     public function scopeView($query): Builder
     {
-        return $query->selectRaw('sum(views.count) AS views, articles.*')
-            ->leftJoin('views', 'views.article_id', '=', 'articles.id')
-            ->groupBy('views.article_id')
-            ->orderBy('views', 'desc');
+        return $query
+            ->orderBy('views_count', 'desc');
     }
 
     /**
@@ -110,4 +113,20 @@ class Article extends Model
     {
         return $query->orderBy('rate', 'desc');
     }
+
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::addGlobalScope('views', function (Builder $query) {
+            $query->withCount(['views' => function($query) {
+                $query->select(DB::raw('COALESCE(sum(count), 0)'));
+            }]);
+        });
+    }
+
 }

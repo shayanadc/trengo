@@ -13,12 +13,14 @@ Feature: Store Articles
                "title" : "How to have a fun!",
                "body": "Lorem ipsum...",
                 "rate": 4,
-               "id": 1
+               "id": 1,
+               "views_count" : 0
             },
             {
                "title" : "How to enjoy!",
                "body": "Lorem ipsum...",
                "rate": 4,
+               "views_count" : 0,
                "id": 2
             }
             ]
@@ -39,6 +41,7 @@ Feature: Store Articles
                "title" : "fun with ...",
                "body": "Lorem ipsum...",
                "id": 1,
+               "views_count" : 0,
                "rate": 4
             }
             ]
@@ -61,6 +64,7 @@ Feature: Store Articles
                "title" : "enjoy with ...",
                "body": "Lorem ipsum...",
                "id": 2,
+               "views_count" : 0,
                "rate": 4
             }
             ]
@@ -84,6 +88,7 @@ Feature: Store Articles
                "title" : "enjoy with ...",
                "body": "Lorem ipsum...",
                "rate": 4,
+               "views_count" : 0,
                "id": 2
             }
             ]
@@ -109,21 +114,21 @@ Feature: Store Articles
                "body": "Lorem ipsum...",
                "id": 3,
                "rate": 4,
-               "views" : 12
+               "views_count" : 12
             },
             {
                "title" : "fun with ...",
                "body": "Lorem ipsum...",
                "id": 1,
                "rate": 4,
-               "views" : 4
+               "views_count" : 4
             },
              {
                "title" : "enjoy with ...",
                "body": "Lorem ipsum...",
                "id": 2,
                "rate": 4,
-               "views" : 3
+               "views_count" : 3
             }
             ]
         }
@@ -144,18 +149,21 @@ Feature: Store Articles
                "title" : "enjoy with ...",
                "body": "Lorem ipsum...",
                "id": 2,
+               "views_count" : 0,
                "rate": 5
             },
             {
                "title" : "listen music ...",
                "body": "Lorem ipsum...",
                "id": 3,
+               "views_count" : 0,
                "rate": 4.5
             },
             {
                "title" : "fun with ...",
                "body": "Lorem ipsum...",
                "id": 1,
+               "views_count" : 0,
                "rate": 4
             }
             ]
