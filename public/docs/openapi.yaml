@@ -1,0 +1,199 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/articles:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    type: ConstraintException
+                    code: 42S02
+                    message: 'SQLSTATE[42S02]: Base table or view not found: 1146 Table ''laravel.articles'' doesn''t exist (SQL: select `articles`.*, (select COALESCE(sum(count), 0) from `views` where `articles`.`id` = `views`.`article_id`) as `views_count` from `articles`)'
+                    detail: 'Business constraints is violated!'
+                properties:
+                  errors:
+                    type: object
+                    example:
+                      type: ConstraintException
+                      code: 42S02
+                      message: 'SQLSTATE[42S02]: Base table or view not found: 1146 Table ''laravel.articles'' doesn''t exist (SQL: select `articles`.*, (select COALESCE(sum(count), 0) from `views` where `articles`.`id` = `views`.`article_id`) as `views_count` from `articles`)'
+                      detail: 'Business constraints is violated!'
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: ''
+                  example: assumenda
+                body:
+                  type: string
+                  description: ''
+                  example: quas
+                categories:
+                  type: array
+                  description: ''
+                  example:
+                    - sed
+                  items:
+                    type: string
+              required:
+                - title
+      security: []
+  '/api/articles/{id}':
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    type: ConstraintException
+                    code: 42S02
+                    message: 'SQLSTATE[42S02]: Base table or view not found: 1146 Table ''laravel.articles'' doesn''t exist (SQL: select `articles`.*, (select COALESCE(sum(count), 0) from `views` where `articles`.`id` = `views`.`article_id`) as `views_count` from `articles` where `id` = 1 limit 1)'
+                    detail: 'Business constraints is violated!'
+                properties:
+                  errors:
+                    type: object
+                    example:
+                      type: ConstraintException
+                      code: 42S02
+                      message: 'SQLSTATE[42S02]: Base table or view not found: 1146 Table ''laravel.articles'' doesn''t exist (SQL: select `articles`.*, (select COALESCE(sum(count), 0) from `views` where `articles`.`id` = `views`.`article_id`) as `views_count` from `articles` where `id` = 1 limit 1)'
+                      detail: 'Business constraints is violated!'
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the article.'
+        example: 9
+        required: true
+        schema:
+          type: integer
+  '/api/articles/{article}/review':
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rate:
+                  type: integer
+                  description: 'Must be between 1 and 5.'
+                  example: 3
+              required:
+                - rate
+      security: []
+    parameters:
+      -
+        in: path
+        name: article
+        description: ''
+        example: 4
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Endpoints
+    description: ''
