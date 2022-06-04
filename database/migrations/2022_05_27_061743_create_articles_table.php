@@ -19,6 +19,7 @@ return new class extends Migration
             $table->longText('body')->nullable();
             $table->decimal('rate', 3, 2)->default(0);
             $table->timestamps();
+            $table->index(['title', 'body', 'rate'], ['rate']);
         });
     }
 

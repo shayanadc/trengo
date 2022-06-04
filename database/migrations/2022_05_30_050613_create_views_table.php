@@ -19,6 +19,7 @@ return new class extends Migration
             $table->timestamp('viewed_at')->default(\Carbon\Carbon::yesterday());
             $table->foreignId('article_id')->constrained('articles')->onDelete('cascade');
             $table->timestamps();
+            $table->index('article_id');
         });
     }
 
