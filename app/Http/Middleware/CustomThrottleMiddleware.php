@@ -15,13 +15,13 @@ class CustomThrottleMiddleware
     {
         $userIp = $request->ip();
 
-//        dd(Carbon::now()->endOfDay()->diffInSeconds(Carbon::now()));
-        $cache = Cache::remember('posted_reviews_' . $userIp, 3600, function () use($userIp) {
+        $remainingSecondsToEndDay = Carbon::now()->endOfDay()->diffInSeconds(Carbon::now());
+        $cache = Cache::remember('posted_reviews_' . $userIp, $remainingSecondsToEndDay, function () use($userIp) {
 
             return Review::ip($userIp)->whereDay('created_at', Carbon::now())->pluck('created_at')->toArray();
 
         });
-        if(count($cache) >= 8)
+        if($cache === 8)
         {
             throw new ThrottleRequestsException('Too Many Attempts.');
         }

@@ -18,9 +18,10 @@ class ReviewEventTest extends TestCase
      */
     public function testCallingTheCacheAfterCreatingAReview()
     {
-//        Cache::spy();
-//        $article = Article::create(['title' => 'agag']);
-//        $review = Review::create(['article_id' => $article->id, 'rate' => 5, 'ip' => '127.0.0.1']);
-//        Cache::shouldHaveReceived('put')->once()->with($review->ip, 1, 10);
+        Cache::spy();
+        \Carbon\Carbon::setTestNow("2020-01-01 23:59:00");
+        $article = Article::factory()->create(['title' => 'agag']);
+        $review = Review::create(['article_id' => $article->id, 'rate' => 5, 'ip' => '127.0.0.1']);
+        Cache::shouldHaveReceived('put')->once()->with('posted_reviews_'. $review->ip, 1, 59);
     }
 }
