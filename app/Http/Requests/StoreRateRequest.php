@@ -25,8 +25,7 @@ class StoreRateRequest extends FormRequest
     public function rules() : array
     {
         return [
-            'rate' => ['required','integer', 'between:1,5'],
-            'article_id' => (app()->make(ArticleRateUniqueIp::class, ['ip' => $this->ip()]))
+            'rate' => ['required', 'integer', 'between:1,5']
         ];
     }
 }

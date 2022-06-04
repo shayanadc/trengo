@@ -21,5 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('articles', ArticleController::class);
-Route::post('rates', [ReviewController::class, 'store']);
+Route::post('articles/{article}/review', [ArticleController::class, 'storeReview']);
 

@@ -5,11 +5,10 @@ Feature: Store Articles
         When The request body is:
         """
         {
-           "rate" : 5,
-           "article_id" : 1
+           "rate" : 5
         }
         """
-        And I send the "post" request to path "/api/rates"
+        And I send the "post" request to path "/api/articles/1/review"
         Then The response status code is "201"
         And I should see the json:
         """
@@ -29,11 +28,10 @@ Feature: Store Articles
         When The request body is:
         """
         {
-           "rate" : "6",
-           "article_id" : 1
+           "rate" : "6"
         }
         """
-        And I send the "post" request to path "/api/rates"
+        And I send the "post" request to path "/api/articles/1/review"
         Then The response status code is "422"
 
     @duplicateStoreArticleRate
@@ -44,11 +42,10 @@ Feature: Store Articles
         When The request body is:
         """
         {
-           "rate" : 5,
-           "article_id" : 1
+           "rate" : 5
         }
         """
-        And I send the "post" request to path "/api/rates"
+        And I send the "post" request to path "/api/articles/1/review"
         Then The response status code is "422"
 
     @ArticleNotFound
@@ -57,9 +54,8 @@ Feature: Store Articles
         When The request body is:
         """
         {
-           "rate" : 5,
-           "article_id" : 170
+           "rate" : 5
         }
         """
-        And I send the "post" request to path "/api/rates"
+        And I send the "post" request to path "/api/articles/150/review"
         Then The response status code is "404"

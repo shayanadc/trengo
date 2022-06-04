@@ -34,6 +34,14 @@ class Article extends Model
         return $this->hasMany(View::class);
     }
 
+    /**
+     * The daily views that belong to the article.
+     */
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+
 
     /**
      * Scope a query to only like title.

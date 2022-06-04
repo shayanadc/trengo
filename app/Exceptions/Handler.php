@@ -74,6 +74,19 @@ class Handler extends ExceptionHandler
             ], 422);
         }
 
-        return parent::render($request, $e);
+        if ($e instanceof \Exception) {
+            return response()->json([
+                "errors" => [
+                    "type" => "ConstraintException",
+                    "code" => $e->getCode(),
+                    "message" => $e->getMessage(),
+                    "detail" => 'Business constraints is violated!'
+                ],
+            ], 422);
+        }
+
+
+
+            return parent::render($request, $e);
     }
 }

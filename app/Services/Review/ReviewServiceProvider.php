@@ -39,9 +39,9 @@ class ReviewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Review::created(function ($review) {
-            Cache::put($review->ip, 1, 10);
-        });
+//        Review::created(function ($review) {
+//            Cache::put($review->ip, 1, 10);
+//        });
     }
 
 }
