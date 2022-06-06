@@ -195,6 +195,13 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
+        /*
+         * Domain Service Provider
+         */
+
+        \App\Services\Article\ArticleServiceProvider::class,
+        \App\Services\Review\ReviewServiceProvider::class
     ],
 
     /*

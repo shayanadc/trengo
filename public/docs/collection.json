@@ -1,0 +1,218 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost"
+        }
+    ],
+    "info": {
+        "name": "Laravel",
+        "_postman_id": "f9a17d02-2fba-4f17-95ec-7047f9da2041",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "Display a listing of the resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/articles",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/articles"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"articles\":[{\"id\":1,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"6\"},{\"id\":2,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"8\"},{\"id\":3,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"4\"},{\"id\":4,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"9\"},{\"id\":5,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"10\"},{\"id\":6,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"10\"},{\"id\":7,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"5\"},{\"id\":8,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"8\"},{\"id\":9,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"2\"},{\"id\":10,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"3\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/articles",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/articles"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"title\":\"odio\",\"body\":\"nostrum\",\"categories\":[\"dolore\"]}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/articles\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/articles\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/articles\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the article."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "58"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"article\":{\"id\":1,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"6\"}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "api\/articles\/{article}\/review",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/articles\/:article\/review",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/articles\/:article\/review",
+                            "variable": [
+                                {
+                                    "id": "article",
+                                    "key": "article",
+                                    "value": "1",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"rate\":2}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

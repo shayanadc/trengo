@@ -2,7 +2,9 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -46,5 +48,45 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $e)
+    {
+        if ($e instanceof ModelNotFoundException) {
+            return response()->json([
+                "error" => [
+                    "code" => '404',
+                    "message" => "your query is not in DB.",
+                    "type" => "ModelNotFoundException",
+                    "detail" => 'Ensure your query id is in your database'
+                ],
+            ], 404);
+        }
+
+        if($e instanceof ValidationException){
+            return response()->json([
+                "errors" => [
+                    "type" => "ValidationException",
+                    "detail" => $e->errors(),
+                    "code" => 422,
+                    "message" => $e->getMessage(),
+                ],
+            ], 422);
+        }
+
+        if ($e instanceof \Exception) {
+            return response()->json([
+                "errors" => [
+                    "type" => "ConstraintException",
+                    "code" => $e->getCode(),
+                    "message" => $e->getMessage(),
+                    "detail" => 'Business constraints is violated!'
+                ],
+            ], 422);
+        }
+
+
+
+            return parent::render($request, $e);
     }
 }

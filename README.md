@@ -1,65 +1,59 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## About Project
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+a knowledge center where articles can be published, read and rated by users (identified by IP address). Articles can be given categories.
 
-## About Laravel
+- Article ( title, body, creation date, categories, views, rates )
+- Categories ( name )
+- Reviews (article, rate)
+- Views (article, date, count)
+- Real Time Views (ip, article, date)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Project Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- List all Articles with filter query
+- Store articles with categories
+- Rate to articles
+- Calculate Rates Ranking based on bayes algorithm
+- A user (an IP address) may only rate once to an article and only 10 times total in the last day
 
-## Learning Laravel
+## Code Architecture
+- Services (use cases) : app/Services
+- Service Provider (dependency injection) : all services depends on abstraction and inject in AppServiceProvider 
+- Rate Limiter :  app/Providers/RouteServiceProvider.php
+- Pipeline Request Query : app/Query 
+- Job Queues: app/Jobs
+- E2E Test (behat) : features/
+- Feature Test : test/Feature
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## System Design
+### Rate Limiter
+- A limit is applied on the number of requests allowed for a user in a given period of time
+  ![Screenshot](public/system_design/rate_limiter.png)
+### Views
+- Each showing the article insert in real time views 
+- The views count for each article calculate based on real time views with daily cron job
+  ![Screenshot](public/system_design/views.png)
+### Rates
+- The ip reviews for each article store in DB
+- the daily cron job calculate the rate ranking Based on Bayesian Algorithm:
+```weighted rank (WR) = (v ÷ (v+m)) × R + (m ÷ (v+m)) × C
+ where:
+  R = average review for the article = (mean_review)
+  v = number of review for the article = (sum_review)
+  m = minimum num of review required to be listed in the analysis
+  C = the average review across the whole report
+  ```
+![Screenshot](public/system_design/rates.png)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Limit Reviews Per Day
+### Limit Reviews Once Per Article
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Run Project
 
-### Premium Partners
+``` php artisan serve ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# trengo
+### Api Documentation (scribe)
+- call this route ```/docs```
+- check the open api file ```public/docs/openapi.yaml```

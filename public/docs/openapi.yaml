@@ -1,0 +1,315 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/articles:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  articles:
+                    -
+                      id: 1
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '6'
+                    -
+                      id: 2
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '8'
+                    -
+                      id: 3
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '4'
+                    -
+                      id: 4
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '9'
+                    -
+                      id: 5
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '10'
+                    -
+                      id: 6
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '10'
+                    -
+                      id: 7
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '5'
+                    -
+                      id: 8
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '8'
+                    -
+                      id: 9
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '2'
+                    -
+                      id: 10
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '3'
+                properties:
+                  articles:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        title: Dr.
+                        body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                        rate: '0.00'
+                        views_count: '6'
+                      -
+                        id: 2
+                        title: Dr.
+                        body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                        rate: '0.00'
+                        views_count: '8'
+                      -
+                        id: 3
+                        title: Dr.
+                        body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                        rate: '0.00'
+                        views_count: '4'
+                      -
+                        id: 4
+                        title: Dr.
+                        body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                        rate: '0.00'
+                        views_count: '9'
+                      -
+                        id: 5
+                        title: Dr.
+                        body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                        rate: '0.00'
+                        views_count: '10'
+                      -
+                        id: 6
+                        title: Dr.
+                        body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                        rate: '0.00'
+                        views_count: '10'
+                      -
+                        id: 7
+                        title: Dr.
+                        body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                        rate: '0.00'
+                        views_count: '5'
+                      -
+                        id: 8
+                        title: Dr.
+                        body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                        rate: '0.00'
+                        views_count: '8'
+                      -
+                        id: 9
+                        title: Dr.
+                        body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                        rate: '0.00'
+                        views_count: '2'
+                      -
+                        id: 10
+                        title: Dr.
+                        body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                        rate: '0.00'
+                        views_count: '3'
+                    items:
+                      type: object
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: ''
+                  example: odio
+                body:
+                  type: string
+                  description: ''
+                  example: nostrum
+                categories:
+                  type: array
+                  description: ''
+                  example:
+                    - dolore
+                  items:
+                    type: string
+              required:
+                - title
+      security: []
+  '/api/articles/{id}':
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  article:
+                    id: 1
+                    title: Dr.
+                    body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                    rate: '0.00'
+                    views_count: '6'
+                properties:
+                  article:
+                    type: object
+                    example:
+                      id: 1
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '6'
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the article.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/articles/{article}/review':
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rate:
+                  type: integer
+                  description: 'Must be between 1 and 5.'
+                  example: 2
+              required:
+                - rate
+      security: []
+    parameters:
+      -
+        in: path
+        name: article
+        description: ''
+        example: 1
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Endpoints
+    description: ''
