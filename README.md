@@ -49,8 +49,6 @@ a knowledge center where articles can be published, read and rated by users (ide
   ```
 ![Screenshot](public/system_design/rates.png)
 
-### Count Article Views Once Per Ip 
-
 ### Limit Reviews Per Day
 
 
