@@ -23,16 +23,19 @@ a knowledge center where articles can be published, read and rated by users (ide
 - Rate Limiter :  app/Providers/RouteServiceProvider.php
 - Pipeline Request Query : app/Query 
 - Job Queues: app/Jobs
+- Database Seeds: database/seeders/DatabaseSeeder.php
 - E2E Test (behat) : features/
 - Feature Test : test/Feature
 
 ## System Design
 ### Rate Limiter
 - A limit is applied on the number of requests allowed for a user in a given period of time
+
   ![Screenshot](public/system_design/rate_limiter.png)
 ### Views
 - Each showing the article insert in real time views 
 - The views count for each article calculate based on real time views with daily cron job
+
   ![Screenshot](public/system_design/views.png)
 ### Rates
 - The ip reviews for each article store in DB
@@ -46,14 +49,23 @@ a knowledge center where articles can be published, read and rated by users (ide
   ```
 ![Screenshot](public/system_design/rates.png)
 
+### Count Article Views Once Per Ip 
+
 ### Limit Reviews Per Day
-### Limit Reviews Once Per Article
 
 
-### Run Project
+#### Run Project
 
 ``` php artisan serve ```
 
-### Api Documentation (scribe)
-- call this route ```/docs```
-- check the open api file ```public/docs/openapi.yaml```
+#### Run Migration
+
+``` php artisan migrate ```
+
+#### Run Seed
+
+``` php artisan db:seed ```
+
+### Open Api Documentation (scribe)
+- See this route ```/docs```
+- Check the open api file ```public/docs/openapi.yaml```
