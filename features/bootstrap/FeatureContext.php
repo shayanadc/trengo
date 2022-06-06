@@ -1,5 +1,6 @@
 <?php
 
+use Behat\Behat\Tester\Exception\PendingException;
 use App\Models\Review;
 use App\Models\Category;
 use App\Models\View;
@@ -146,5 +147,4 @@ class FeatureContext extends TestCase implements Context
 
             );
     }
-
 }

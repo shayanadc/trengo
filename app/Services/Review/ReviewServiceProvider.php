@@ -42,7 +42,8 @@ class ReviewServiceProvider extends ServiceProvider
     {
         Review::created(function ($review) {
             $remainingTimeToEndDay = Carbon::now()->endOfDay()->diffInSeconds(Carbon::now());
-            Cache::put('posted_reviews_'. $review->ip, 1, $remainingTimeToEndDay);
+            $cacheExist =  Cache::get('posted_reviews_'. $review->ip, 0);
+            Cache::put('posted_reviews_'. $review->ip, $cacheExist + 1, $remainingTimeToEndDay);
         });
     }
 

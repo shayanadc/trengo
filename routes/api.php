@@ -17,5 +17,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('articles', ArticleController::class);
-Route::post('articles/{article}/review', [ArticleController::class, 'storeReview']);
+Route::post('articles/{article}/review', [ArticleController::class, 'storeReview'])->middleware('reviews.limitation');
 
