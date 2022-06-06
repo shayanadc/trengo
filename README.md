@@ -51,6 +51,11 @@ a knowledge center where articles can be published, read and rated by users (ide
 
 ### Limit Reviews Per Day
 
+- store all reviews and store in db
+- update the count of each day reviews cache 
+- ttl up to end of the day
+
+![Screenshot](public/system_design/reviews_limiter.png)
 
 #### Run Project
 
