@@ -32,7 +32,7 @@ class ArticleShowingService implements ArticleShowingContract, ViewCounterContra
     public function isViewedBy($article, $ip) : bool
     {
 
-        return in_array($article->id, SeenArticleListByIp::getMany($ip));
+        return ArticleSeen::byIp($article->id, $ip);
 
     }
 
