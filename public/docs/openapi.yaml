@@ -27,26 +27,140 @@ paths:
           schema:
             type: string
       responses:
-        422:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  errors:
-                    type: ConstraintException
-                    code: 42S02
-                    message: 'SQLSTATE[42S02]: Base table or view not found: 1146 Table ''laravel.articles'' doesn''t exist (SQL: select `articles`.*, (select COALESCE(sum(count), 0) from `views` where `articles`.`id` = `views`.`article_id`) as `views_count` from `articles`)'
-                    detail: 'Business constraints is violated!'
+                  articles:
+                    -
+                      id: 1
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '6'
+                    -
+                      id: 2
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '8'
+                    -
+                      id: 3
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '4'
+                    -
+                      id: 4
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '9'
+                    -
+                      id: 5
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '10'
+                    -
+                      id: 6
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '10'
+                    -
+                      id: 7
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '5'
+                    -
+                      id: 8
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '8'
+                    -
+                      id: 9
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '2'
+                    -
+                      id: 10
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '3'
                 properties:
-                  errors:
-                    type: object
+                  articles:
+                    type: array
                     example:
-                      type: ConstraintException
-                      code: 42S02
-                      message: 'SQLSTATE[42S02]: Base table or view not found: 1146 Table ''laravel.articles'' doesn''t exist (SQL: select `articles`.*, (select COALESCE(sum(count), 0) from `views` where `articles`.`id` = `views`.`article_id`) as `views_count` from `articles`)'
-                      detail: 'Business constraints is violated!'
+                      -
+                        id: 1
+                        title: Dr.
+                        body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                        rate: '0.00'
+                        views_count: '6'
+                      -
+                        id: 2
+                        title: Dr.
+                        body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                        rate: '0.00'
+                        views_count: '8'
+                      -
+                        id: 3
+                        title: Dr.
+                        body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                        rate: '0.00'
+                        views_count: '4'
+                      -
+                        id: 4
+                        title: Dr.
+                        body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                        rate: '0.00'
+                        views_count: '9'
+                      -
+                        id: 5
+                        title: Dr.
+                        body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                        rate: '0.00'
+                        views_count: '10'
+                      -
+                        id: 6
+                        title: Dr.
+                        body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                        rate: '0.00'
+                        views_count: '10'
+                      -
+                        id: 7
+                        title: Dr.
+                        body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                        rate: '0.00'
+                        views_count: '5'
+                      -
+                        id: 8
+                        title: Dr.
+                        body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                        rate: '0.00'
+                        views_count: '8'
+                      -
+                        id: 9
+                        title: Dr.
+                        body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                        rate: '0.00'
+                        views_count: '2'
+                      -
+                        id: 10
+                        title: Dr.
+                        body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                        rate: '0.00'
+                        views_count: '3'
+                    items:
+                      type: object
       tags:
         - Endpoints
       security: []
@@ -81,16 +195,16 @@ paths:
                 title:
                   type: string
                   description: ''
-                  example: assumenda
+                  example: odio
                 body:
                   type: string
                   description: ''
-                  example: quas
+                  example: nostrum
                 categories:
                   type: array
                   description: ''
                   example:
-                    - sed
+                    - dolore
                   items:
                     type: string
               required:
@@ -116,26 +230,28 @@ paths:
           schema:
             type: string
       responses:
-        422:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  errors:
-                    type: ConstraintException
-                    code: 42S02
-                    message: 'SQLSTATE[42S02]: Base table or view not found: 1146 Table ''laravel.articles'' doesn''t exist (SQL: select `articles`.*, (select COALESCE(sum(count), 0) from `views` where `articles`.`id` = `views`.`article_id`) as `views_count` from `articles` where `id` = 1 limit 1)'
-                    detail: 'Business constraints is violated!'
+                  article:
+                    id: 1
+                    title: Dr.
+                    body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                    rate: '0.00'
+                    views_count: '6'
                 properties:
-                  errors:
+                  article:
                     type: object
                     example:
-                      type: ConstraintException
-                      code: 42S02
-                      message: 'SQLSTATE[42S02]: Base table or view not found: 1146 Table ''laravel.articles'' doesn''t exist (SQL: select `articles`.*, (select COALESCE(sum(count), 0) from `views` where `articles`.`id` = `views`.`article_id`) as `views_count` from `articles` where `id` = 1 limit 1)'
-                      detail: 'Business constraints is violated!'
+                      id: 1
+                      title: Dr.
+                      body: 'Sint dolor nihil numquam libero nulla ipsa.'
+                      rate: '0.00'
+                      views_count: '6'
       tags:
         - Endpoints
       security: []
@@ -144,7 +260,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the article.'
-        example: 9
+        example: 1
         required: true
         schema:
           type: integer
@@ -180,7 +296,7 @@ paths:
                 rate:
                   type: integer
                   description: 'Must be between 1 and 5.'
-                  example: 3
+                  example: 2
               required:
                 - rate
       security: []
@@ -189,7 +305,7 @@ paths:
         in: path
         name: article
         description: ''
-        example: 4
+        example: 1
         required: true
         schema:
           type: integer

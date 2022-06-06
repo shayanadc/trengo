@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "0bb413ca-f986-4881-aff1-c75d7af1d41b",
+        "_postman_id": "f9a17d02-2fba-4f17-95ec-7047f9da2041",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -69,8 +69,8 @@
                                     "value": "*"
                                 }
                             ],
-                            "code": 422,
-                            "body": "{\"errors\":{\"type\":\"ConstraintException\",\"code\":\"42S02\",\"message\":\"SQLSTATE[42S02]: Base table or view not found: 1146 Table 'laravel.articles' doesn't exist (SQL: select `articles`.*, (select COALESCE(sum(count), 0) from `views` where `articles`.`id` = `views`.`article_id`) as `views_count` from `articles`)\",\"detail\":\"Business constraints is violated!\"}}",
+                            "code": 200,
+                            "body": "{\"articles\":[{\"id\":1,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"6\"},{\"id\":2,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"8\"},{\"id\":3,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"4\"},{\"id\":4,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"9\"},{\"id\":5,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"10\"},{\"id\":6,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"10\"},{\"id\":7,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"5\"},{\"id\":8,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"8\"},{\"id\":9,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"2\"},{\"id\":10,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"3\"}]}",
                             "name": ""
                         }
                     ]
@@ -97,7 +97,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"title\":\"assumenda\",\"body\":\"quas\",\"categories\":[\"sed\"]}"
+                            "raw": "{\"title\":\"odio\",\"body\":\"nostrum\",\"categories\":[\"dolore\"]}"
                         },
                         "description": "",
                         "auth": {
@@ -118,7 +118,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "9",
+                                    "value": "1",
                                     "description": "The ID of the article."
                                 }
                             ]
@@ -164,8 +164,8 @@
                                     "value": "*"
                                 }
                             ],
-                            "code": 422,
-                            "body": "{\"errors\":{\"type\":\"ConstraintException\",\"code\":\"42S02\",\"message\":\"SQLSTATE[42S02]: Base table or view not found: 1146 Table 'laravel.articles' doesn't exist (SQL: select `articles`.*, (select COALESCE(sum(count), 0) from `views` where `articles`.`id` = `views`.`article_id`) as `views_count` from `articles` where `id` = 1 limit 1)\",\"detail\":\"Business constraints is violated!\"}}",
+                            "code": 200,
+                            "body": "{\"article\":{\"id\":1,\"title\":\"Dr.\",\"body\":\"Sint dolor nihil numquam libero nulla ipsa.\",\"rate\":\"0.00\",\"views_count\":\"6\"}}",
                             "name": ""
                         }
                     ]
@@ -182,7 +182,7 @@
                                 {
                                     "id": "article",
                                     "key": "article",
-                                    "value": "4",
+                                    "value": "1",
                                     "description": ""
                                 }
                             ]
@@ -200,7 +200,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"rate\":3}"
+                            "raw": "{\"rate\":2}"
                         },
                         "description": "",
                         "auth": {

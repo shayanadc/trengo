@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->longText('body')->nullable();
+            $table->string('title', 60);
+            $table->text('body')->nullable();
             $table->decimal('rate', 3, 2)->default(0);
             $table->timestamps();
-            $table->index(['title', 'body', 'rate'], ['rate']);
+            $table->index(['title', 'rate']);
+            $table->index(['rate']);
         });
     }
 

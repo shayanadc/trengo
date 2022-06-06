@@ -20,8 +20,8 @@ endpoints:
     bodyParameters: []
     responses:
       -
-        status: 422
-        content: '{"errors":{"type":"ConstraintException","code":"42S02","message":"SQLSTATE[42S02]: Base table or view not found: 1146 Table ''laravel.articles'' doesn''t exist (SQL: select `articles`.*, (select COALESCE(sum(count), 0) from `views` where `articles`.`id` = `views`.`article_id`) as `views_count` from `articles`)","detail":"Business constraints is violated!"}}'
+        status: 200
+        content: '{"articles":[{"id":1,"title":"Dr.","body":"Sint dolor nihil numquam libero nulla ipsa.","rate":"0.00","views_count":"6"},{"id":2,"title":"Dr.","body":"Sint dolor nihil numquam libero nulla ipsa.","rate":"0.00","views_count":"8"},{"id":3,"title":"Dr.","body":"Sint dolor nihil numquam libero nulla ipsa.","rate":"0.00","views_count":"4"},{"id":4,"title":"Dr.","body":"Sint dolor nihil numquam libero nulla ipsa.","rate":"0.00","views_count":"9"},{"id":5,"title":"Dr.","body":"Sint dolor nihil numquam libero nulla ipsa.","rate":"0.00","views_count":"10"},{"id":6,"title":"Dr.","body":"Sint dolor nihil numquam libero nulla ipsa.","rate":"0.00","views_count":"10"},{"id":7,"title":"Dr.","body":"Sint dolor nihil numquam libero nulla ipsa.","rate":"0.00","views_count":"5"},{"id":8,"title":"Dr.","body":"Sint dolor nihil numquam libero nulla ipsa.","rate":"0.00","views_count":"8"},{"id":9,"title":"Dr.","body":"Sint dolor nihil numquam libero nulla ipsa.","rate":"0.00","views_count":"2"},{"id":10,"title":"Dr.","body":"Sint dolor nihil numquam libero nulla ipsa.","rate":"0.00","views_count":"3"}]}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -49,14 +49,14 @@ endpoints:
         name: title
         description: ''
         required: true
-        example: assumenda
+        example: odio
         type: string
         custom: []
       body:
         name: body
         description: ''
         required: false
-        example: quas
+        example: nostrum
         type: string
         custom: []
       categories:
@@ -64,7 +64,7 @@ endpoints:
         description: ''
         required: false
         example:
-          - sed
+          - dolore
         type: 'string[]'
         custom: []
     responses: []
@@ -86,15 +86,15 @@ endpoints:
         name: id
         description: 'The ID of the article.'
         required: true
-        example: 9
+        example: 1
         type: integer
         custom: []
     queryParameters: []
     bodyParameters: []
     responses:
       -
-        status: 422
-        content: '{"errors":{"type":"ConstraintException","code":"42S02","message":"SQLSTATE[42S02]: Base table or view not found: 1146 Table ''laravel.articles'' doesn''t exist (SQL: select `articles`.*, (select COALESCE(sum(count), 0) from `views` where `articles`.`id` = `views`.`article_id`) as `views_count` from `articles` where `id` = 1 limit 1)","detail":"Business constraints is violated!"}}'
+        status: 200
+        content: '{"article":{"id":1,"title":"Dr.","body":"Sint dolor nihil numquam libero nulla ipsa.","rate":"0.00","views_count":"6"}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -120,7 +120,7 @@ endpoints:
         name: article
         description: ''
         required: true
-        example: 4
+        example: 1
         type: integer
         custom: []
     queryParameters: []
@@ -129,7 +129,7 @@ endpoints:
         name: rate
         description: 'Must be between 1 and 5.'
         required: true
-        example: 3
+        example: 2
         type: integer
         custom: []
     responses: []

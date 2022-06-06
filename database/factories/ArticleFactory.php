@@ -12,21 +12,6 @@ use Illuminate\Support\Facades\DB;
  */
 class ArticleFactory extends Factory
 {
-
-    public static function save($articleAttributes)
-    {
-        $categoryIds = $articleAttributes['categories'] ?? [];
-        $categoryIds = Category::existed($categoryIds)->get('id')->pluck('id');
-
-        return DB::transaction(function () use ($articleAttributes, $categoryIds) {
-
-            $article = Article::create($articleAttributes);
-            $article->setCategories($categoryIds);
-
-            return $article;
-
-        });
-    }
     /**
      * Define the model's default state.
      *
