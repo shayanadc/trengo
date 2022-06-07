@@ -53,7 +53,7 @@ a knowledge center where articles can be published, read and rated by users (ide
 
 - store all reviews and store in db
 - update the count of each day reviews cache 
-- ttl up to end of the day
+- set ttl up to end of the day on each hitting
 
 ![Screenshot](public/system_design/reviews_limiter.png)
 
